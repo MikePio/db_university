@@ -23,6 +23,12 @@ SELECT *
 FROM `students`
 WHERE YEAR(`date_of_birth`) > 1993;
 
+//* MIGLIORE
+
+SELECT *
+FROM `students`
+WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) > 30;
+
 
 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
 
@@ -39,15 +45,22 @@ FROM `exams`
 WHERE `hour` > '14:00:00' 
 AND `date` = '2020-06-20';
 
+SELECT *
+FROM `exams`
+WHERE HOUR(`hour`) >= 14 
+AND `date` = '2020-06-20';
 
 6. Selezionare tutti i corsi di laurea magistrale (38)
 
+SELECT *
+FROM `degree`
+WHERE `level` = 'magistrale';
 
 
 
 7. Da quanti dipartimenti è composta l'università? (12)
 
-SELECT COUNT(*) AS `numero_to_dipartimenti`
+SELECT COUNT(*) AS `numero_dipartimenti`
 FROM `departments`;
 
 
